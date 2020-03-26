@@ -3,7 +3,7 @@ package Logic;
 import java.util.ArrayList;
 
 public class Rectangle2D {
-    ArrayList<Point2D> point2DList = new ArrayList<>();
+    private ArrayList<Point2D> point2DList = new ArrayList<>();
 
     public Rectangle2D(Point2D p1, Point2D p2, Point2D p3, Point2D p4){
         point2DList.add(p1);

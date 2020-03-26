@@ -1,9 +1,9 @@
 package Logic;
 
 public class Point2D {
-    public double x;
-    public double y;
-    public double z;
+    private double x;
+    private double y;
+    private double z;
 
     public Point2D(double x, double y){
         this.x = x;

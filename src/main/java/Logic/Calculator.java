@@ -1,17 +1,18 @@
 package Logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Calculator {
 
-    ArrayList<Rectangle3D> rectangle3DList;
-    ArrayList<Rectangle2D> rectangle2DList;
+    private ArrayList<Rectangle3D> rectangle3DList;
+    private ArrayList<Rectangle2D> rectangle2DList;
+
     double distance = -200f;
 
     public Calculator(ArrayList<Rectangle3D> rectangle3DList){
         this.rectangle3DList = rectangle3DList;
     }
-
 
     public ArrayList<Rectangle2D> projection(){
         rectangle2DList = new ArrayList<>();
@@ -19,8 +20,15 @@ public class Calculator {
             Rectangle2D rectangle2D = new Rectangle2D();
             ArrayList<Point2D> point2DList = new ArrayList<>();
             for (Point3D point3D : rectangle3D.getPoint3DList()) {
-                double xp = ((point3D.getX() * distance) / (point3D.getZ() - distance)) + 325;
-                double yp = ((point3D.getY() * distance) / (point3D.getZ() - distance)) + 325;
+                double x = point3D.getX();
+                double y = point3D.getY();
+                double z = point3D.getZ();
+
+                double xp = ((x * distance) / (z > 0 ? z : 0.00001)) + 325;
+                double yp = ((y * distance) / (z > 0 ? z : 0.00001)) + 325;
+
+//                double xp = ((x * distance) / (z - distance >= 0 ? z - distance : 0.000001)) + 325;
+//                double yp = ((y * distance) / (z - distance >= 0 ? z - distance : 0.000001)) + 325;
                 Point2D point2D = new Point2D(xp, yp);
                 point2DList.add(point2D);
             }
@@ -46,15 +54,60 @@ public class Calculator {
         this.rectangle2DList = rectangle2DList;
     }
 
-    public double getDistance() {
-        return distance;
-    }
-
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
-
     public void changeDistance(double change){
         this.distance += change;
+        if(this.distance < -1000){
+            this.distance = -1000;
+        }
+        if(this.distance > -20){
+            this.distance = -20;
+        }
+        System.out.println(this.distance);
+    }
+
+    public void changeTranslation(double change, String axis){
+        for(Rectangle3D rectangle3D: this.rectangle3DList){
+            for(Point3D point3D: rectangle3D.getPoint3DList()){
+                switch (axis){
+                    case "x":
+                        point3D.setX(point3D.getX() + change);
+                        break;
+                    case "y":
+                        point3D.setY(point3D.getY() + change);
+                        break;
+                    case "z":
+                        point3D.setZ(point3D.getZ() + change);
+                        break;
+                }
+            }
+        }
+    }
+
+    public void changeRotation(double change, String axis){
+        System.out.println("cos: " + Math.cos(change) + " sin: " + Math.sin(change));
+        System.out.println(Math.sin(change) * 0 + Math.cos(change) * 100);
+        for(Rectangle3D rectangle3D: this.rectangle3DList){
+            for(Point3D point3D: rectangle3D.getPoint3DList()){
+                double x = point3D.getX();
+                double y = point3D.getY();
+                double z = point3D.getZ();
+                switch (axis){
+                    case "x":
+                        point3D.setY(Math.cos(change) * y - Math.sin(change) * z);
+                        point3D.setZ(Math.sin(change) * y + Math.cos(change) * z);
+                        break;
+                    case "y":
+                        //System.out.println("STARE: " + x/10 + " " + y /10+ " " + z/10);
+                        point3D.setX(Math.cos(change) * x + Math.sin(change) * z);
+                        point3D.setZ(-Math.sin(change) * x + Math.cos(change) * z);
+                        //System.out.println("NOWE: " + point3D.getX()/10 + " " + point3D.getY()/10 + " " + point3D.getZ()/10);
+                        break;
+                    case "z":
+                        point3D.setX(Math.cos(change) * x - Math.sin(change) * y);
+                        point3D.setY(Math.sin(change) * x + Math.cos(change) * y);
+                        break;
+                }
+            }
+        }
     }
 }
