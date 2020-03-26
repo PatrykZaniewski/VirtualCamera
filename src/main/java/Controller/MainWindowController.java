@@ -28,7 +28,7 @@ public class MainWindowController {
         ArrayList<Rectangle3D> rectangle3DList = reader.readData();
         calculator = new Calculator(rectangle3DList);
         calculator.changeTranslation(100, "z");
-        calculator.changeTranslation(-100, "y");
+        calculator.changeTranslation(-105, "y");
         calculator.projection();
         draw(calculator.getRectangle2DList());
 

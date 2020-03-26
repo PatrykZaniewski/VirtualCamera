@@ -26,24 +26,11 @@ public class Calculator {
 
                 System.out.println("x: " + x + " y: " + y + " z: " + z);
 
-                double xp = ((x * distance) / (z > 0 ? z : 0.00001)) + 325;
-                double yp = ((y * distance) / (z > 0 ? z : 0.00001)) + 325;
-
-//                xp = xp > 325 ? xp : 325;
-//                yp = yp > 325 ? yp : 325;
-
-                if(xp > 650){
-                    xp = 650;
-                }
-
-                if(yp > 650){
-                    yp = 650;
-                }
+                double xp = ((x * distance) / (z > 1 ? z : 1)) + 325;
+                double yp = ((y * distance) / (z > 1 ? z : 1)) + 325;
 
                 System.out.println("Po zmianie x:" + (xp) + " y " + (yp));
 
-//                double xp = ((x * distance) / (z - distance >= 0 ? z - distance : 0.000001)) + 325;
-//                double yp = ((y * distance) / (z - distance >= 0 ? z - distance : 0.000001)) + 325;
                 Point2D point2D = new Point2D(xp, yp);
                 point2DList.add(point2D);
             }
