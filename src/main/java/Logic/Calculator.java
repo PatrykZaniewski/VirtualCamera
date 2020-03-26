@@ -24,8 +24,23 @@ public class Calculator {
                 double y = point3D.getY();
                 double z = point3D.getZ();
 
+                System.out.println("x: " + x + " y: " + y + " z: " + z);
+
                 double xp = ((x * distance) / (z > 0 ? z : 0.00001)) + 325;
                 double yp = ((y * distance) / (z > 0 ? z : 0.00001)) + 325;
+
+//                xp = xp > 325 ? xp : 325;
+//                yp = yp > 325 ? yp : 325;
+
+                if(xp > 650){
+                    xp = 650;
+                }
+
+                if(yp > 650){
+                    yp = 650;
+                }
+
+                System.out.println("Po zmianie x:" + (xp) + " y " + (yp));
 
 //                double xp = ((x * distance) / (z - distance >= 0 ? z - distance : 0.000001)) + 325;
 //                double yp = ((y * distance) / (z - distance >= 0 ? z - distance : 0.000001)) + 325;
@@ -35,6 +50,9 @@ public class Calculator {
             rectangle2D.setPoint2DList(point2DList);
             rectangle2DList.add(rectangle2D);
         }
+        System.out.println();
+        System.out.println();
+
         return rectangle2DList;
     }
 
@@ -84,8 +102,8 @@ public class Calculator {
     }
 
     public void changeRotation(double change, String axis){
-        System.out.println("cos: " + Math.cos(change) + " sin: " + Math.sin(change));
-        System.out.println(Math.sin(change) * 0 + Math.cos(change) * 100);
+//        System.out.println("cos: " + Math.cos(change) + " sin: " + Math.sin(change));
+//        System.out.println(Math.sin(change) * 0 + Math.cos(change) * 100);
         for(Rectangle3D rectangle3D: this.rectangle3DList){
             for(Point3D point3D: rectangle3D.getPoint3DList()){
                 double x = point3D.getX();
