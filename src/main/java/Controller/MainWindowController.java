@@ -27,7 +27,7 @@ public class MainWindowController {
         Reader reader = new Reader();
         ArrayList<Rectangle3D> rectangle3DList = reader.readData();
         calculator = new Calculator(rectangle3DList);
-        calculator.changeTranslation(100, "z");
+        calculator.changeTranslation(105, "z");
         calculator.changeTranslation(-105, "y");
         calculator.projection();
         draw(calculator.getRectangle2DList());
@@ -93,22 +93,22 @@ public class MainWindowController {
                     calculator.changeTranslation(10, "y");
                     break;
                 case "q":
-                    calculator.changeRotation(-Math.PI/30, "y");
+                    calculator.changeRotation(-30, "y");
                     break;
                 case "e":
-                    calculator.changeRotation(Math.PI/30, "y");
+                    calculator.changeRotation(30, "y");
                     break;
                 case "r":
-                    calculator.changeRotation(-Math.PI/30, "z");
+                    calculator.changeRotation(-30, "z");
                     break;
                 case "f":
-                    calculator.changeRotation(Math.PI/30, "z");
+                    calculator.changeRotation(30, "z");
                     break;
                 case "t":
-                    calculator.changeRotation(-Math.PI/30, "x");
+                    calculator.changeRotation(30, "x");
                     break;
                 case "g":
-                    calculator.changeRotation(Math.PI/30, "x");
+                    calculator.changeRotation(30, "x");
                     break;
                 case "z":
                     calculator.changeDistance(-15);

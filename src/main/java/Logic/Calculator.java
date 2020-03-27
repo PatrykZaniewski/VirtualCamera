@@ -3,6 +3,8 @@ package Logic;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static java.lang.Thread.sleep;
+
 public class Calculator {
 
     private ArrayList<Rectangle3D> rectangle3DList;
@@ -10,13 +12,13 @@ public class Calculator {
 
     double distance = -200f;
 
-    public Calculator(ArrayList<Rectangle3D> rectangle3DList){
+    public Calculator(ArrayList<Rectangle3D> rectangle3DList) {
         this.rectangle3DList = rectangle3DList;
     }
 
-    public ArrayList<Rectangle2D> projection(){
+    public ArrayList<Rectangle2D> projection() {
         rectangle2DList = new ArrayList<>();
-        for(Rectangle3D rectangle3D : rectangle3DList) {
+        for (Rectangle3D rectangle3D : rectangle3DList) {
             Rectangle2D rectangle2D = new Rectangle2D();
             ArrayList<Point2D> point2DList = new ArrayList<>();
             for (Point3D point3D : rectangle3D.getPoint3DList()) {
@@ -24,10 +26,9 @@ public class Calculator {
                 double y = point3D.getY();
                 double z = point3D.getZ();
 
-                System.out.println("x: " + x + " y: " + y + " z: " + z);
-
                 double xp = ((x * distance) / (z > 1 ? z : 1)) + 325;
                 double yp = ((y * distance) / (z > 1 ? z : 1)) + 325;
+
 
                 System.out.println("Po zmianie x:" + (xp) + " y " + (yp));
 
@@ -59,21 +60,21 @@ public class Calculator {
         this.rectangle2DList = rectangle2DList;
     }
 
-    public void changeDistance(double change){
+    public void changeDistance(double change) {
         this.distance += change;
-        if(this.distance < -1000){
+        if (this.distance < -1000) {
             this.distance = -1000;
         }
-        if(this.distance > -20){
+        if (this.distance > -20) {
             this.distance = -20;
         }
         System.out.println(this.distance);
     }
 
-    public void changeTranslation(double change, String axis){
-        for(Rectangle3D rectangle3D: this.rectangle3DList){
-            for(Point3D point3D: rectangle3D.getPoint3DList()){
-                switch (axis){
+    public void changeTranslation(double change, String axis) {
+        for (Rectangle3D rectangle3D : this.rectangle3DList) {
+            for (Point3D point3D : rectangle3D.getPoint3DList()) {
+                switch (axis) {
                     case "x":
                         point3D.setX(point3D.getX() + change);
                         break;
@@ -88,15 +89,16 @@ public class Calculator {
         }
     }
 
-    public void changeRotation(double change, String axis){
-//        System.out.println("cos: " + Math.cos(change) + " sin: " + Math.sin(change));
+    public void changeRotation(double change, String axis) {
+        change = Math.toRadians(change);
+        System.out.println("cos: " + Math.cos(change) + " sin: " + Math.sin(change));
 //        System.out.println(Math.sin(change) * 0 + Math.cos(change) * 100);
-        for(Rectangle3D rectangle3D: this.rectangle3DList){
-            for(Point3D point3D: rectangle3D.getPoint3DList()){
+        for (Rectangle3D rectangle3D : this.rectangle3DList) {
+            for (Point3D point3D : rectangle3D.getPoint3DList()) {
                 double x = point3D.getX();
                 double y = point3D.getY();
                 double z = point3D.getZ();
-                switch (axis){
+                switch (axis) {
                     case "x":
                         point3D.setY(Math.cos(change) * y - Math.sin(change) * z);
                         point3D.setZ(Math.sin(change) * y + Math.cos(change) * z);
