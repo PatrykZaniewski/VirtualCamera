@@ -108,7 +108,7 @@ public class MainWindowController {
                     calculator.changeRotation(30, "x");
                     break;
                 case "g":
-                    calculator.changeRotation(30, "x");
+                    calculator.changeRotation(-30, "x");
                     break;
                 case "z":
                     calculator.changeDistance(-15);

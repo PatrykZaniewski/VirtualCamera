@@ -21,6 +21,44 @@ public class Calculator {
         for (Rectangle3D rectangle3D : rectangle3DList) {
             Rectangle2D rectangle2D = new Rectangle2D();
             ArrayList<Point2D> point2DList = new ArrayList<>();
+            /*for (int i = 0; i < rectangle3D.getPoint3DList().size(); i++) {
+
+                double x1, y1, z1;
+                double x2, y2, z2;
+                Point2D point2D1;
+                Point2D point2D2;
+                if(i == rectangle3D.getPoint3DList().size() - 1){
+                    x1 = rectangle3D.getPoint3DList().get(i).getX();
+                    y1 = rectangle3D.getPoint3DList().get(i).getY();
+                    z1 = rectangle3D.getPoint3DList().get(i).getZ();
+                    x2 = rectangle3D.getPoint3DList().get(0).getX();
+                    y2 = rectangle3D.getPoint3DList().get(0).getY();
+                    z2 = rectangle3D.getPoint3DList().get(0).getZ();
+                }
+                else
+                {
+                    x1 = rectangle3D.getPoint3DList().get(i).getX();
+                    y1 = rectangle3D.getPoint3DList().get(i).getY();
+                    z1 = rectangle3D.getPoint3DList().get(i).getZ();
+                    x2 = rectangle3D.getPoint3DList().get(i + 1).getX();
+                    y2 = rectangle3D.getPoint3DList().get(i + 1).getY();
+                    z2 = rectangle3D.getPoint3DList().get(i + 1).getZ();
+                }
+
+                if(1 == 1){
+                    double xp1 = ((x1 * distance) / (z1 > 1 ? z1 : 1)) + 325;
+                    double yp1 = ((y1 * distance) / (z1 > 1 ? z1 : 1)) + 325;
+
+                    double xp2 = ((x2 * distance) / (z2 > 1 ? z2 : 1)) + 325;
+                    double yp2 = ((y2 * distance) / (z2 > 1 ? z2 : 1)) + 325;
+
+                    point2D1 = new Point2D(xp1, yp1);
+                    point2D2 = new Point2D(xp2, yp2);
+
+                    point2DList.add(point2D1);
+                    point2DList.add(point2D2);
+                }
+            }*/
             for (Point3D point3D : rectangle3D.getPoint3DList()) {
                 double x = point3D.getX();
                 double y = point3D.getY();
