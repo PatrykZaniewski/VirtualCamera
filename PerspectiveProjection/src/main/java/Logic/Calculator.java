@@ -1,7 +1,6 @@
 package Logic;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import static java.lang.Thread.sleep;
 
@@ -66,9 +65,6 @@ public class Calculator {
 
                 double xp = ((x * distance) / (z > 1 ? z : 1)) + 325;
                 double yp = ((y * distance) / (z > 1 ? z : 1)) + 325;
-
-
-                System.out.println("Po zmianie x:" + (xp) + " y " + (yp));
 
                 Point2D point2D = new Point2D(xp, yp);
                 point2DList.add(point2D);
