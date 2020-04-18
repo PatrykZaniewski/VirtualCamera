@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Reader {
     public ArrayList<Rectangle3D> readData(){
-        File A = new File("data.txt");
+        File A = new File("src/main/resource/data.txt");
         Scanner scannerA;
         ArrayList<Rectangle3D> rectangle3DList = new ArrayList<>();
         try {

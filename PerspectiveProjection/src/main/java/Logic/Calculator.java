@@ -72,9 +72,6 @@ public class Calculator {
             rectangle2D.setPoint2DList(point2DList);
             rectangle2DList.add(rectangle2D);
         }
-        System.out.println();
-        System.out.println();
-
         return rectangle2DList;
     }
 
@@ -102,7 +99,6 @@ public class Calculator {
         if (this.distance > -20) {
             this.distance = -20;
         }
-        System.out.println(this.distance);
     }
 
     public void changeTranslation(double change, String axis) {
@@ -125,8 +121,6 @@ public class Calculator {
 
     public void changeRotation(double change, String axis) {
         change = Math.toRadians(change);
-        System.out.println("cos: " + Math.cos(change) + " sin: " + Math.sin(change));
-//        System.out.println(Math.sin(change) * 0 + Math.cos(change) * 100);
         for (Rectangle3D rectangle3D : this.rectangle3DList) {
             for (Point3D point3D : rectangle3D.getPoint3DList()) {
                 double x = point3D.getX();
@@ -138,10 +132,8 @@ public class Calculator {
                         point3D.setZ(Math.sin(change) * y + Math.cos(change) * z);
                         break;
                     case "y":
-                        //System.out.println("STARE: " + x/10 + " " + y /10+ " " + z/10);
                         point3D.setX(Math.cos(change) * x + Math.sin(change) * z);
                         point3D.setZ(-Math.sin(change) * x + Math.cos(change) * z);
-                        //System.out.println("NOWE: " + point3D.getX()/10 + " " + point3D.getY()/10 + " " + point3D.getZ()/10);
                         break;
                     case "z":
                         point3D.setX(Math.cos(change) * x - Math.sin(change) * y);
